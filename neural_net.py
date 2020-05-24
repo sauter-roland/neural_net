@@ -29,12 +29,6 @@ class NeuralNet:
         ])
         return return_str
 
-    def train(self, training_x, training_y):
-        pass
-
-    def predict(self, prediction_x):
-        pass
-
     def init_weights_random_(self):
         """
         Initializes weights to random floats between -0.5 and 0.5.
@@ -78,6 +72,10 @@ class NeuralNet:
         val_out = self.activation_function(val_out)
 
         return val_out, val_hidden
+
+    def predict(self, val_in):
+        val_out = self.query(val_in)[0]
+        return np.argmax(val_out)
 
     def train(self, data, targets):
         data = np.array(data, ndmin=2).T
